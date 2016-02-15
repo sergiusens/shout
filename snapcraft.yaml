@@ -1,0 +1,20 @@
+name: shout
+version: 0.53.0
+summary: A self hosted web IRC client
+description: This example is not really production quality
+
+apps:
+  server:
+    command: bin/shout --home $SNAP_DATA
+    daemon: simple
+    uses: [listener]
+
+uses:
+  listener:
+    type: migration-skill
+    caps: [network-listener]
+
+parts:
+  shout:
+    plugin: nodejs
+    source: .
